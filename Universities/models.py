@@ -2,7 +2,7 @@ import uuid
 from django.db import models
 
 class University(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4 editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=50)
     code = models.CharField(max_length=50, unique=True)
     address = models.TextField(blank=True)
@@ -11,7 +11,7 @@ class University(models.Model):
     contact_phone = models.CharField(max_length=20, blank=True)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
-    def_str_(Self):
+    def __str__(self):
         return self.name

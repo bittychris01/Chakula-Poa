@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     'core',
     'subscriptions',
     'meals',
-    'payments'
+    'payments',
+    'Universities',
+    'Users',
 
 ]
 
@@ -63,15 +65,15 @@ MIDDLEWARE = [
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': "redis://127.0.0.1:6379/1",
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-        }
-    }
-}
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django_redis.cache.RedisCache',
+#         'LOCATION': "redis://127.0.0.1:6379/1",
+#         'OPTIONS': {
+#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+#         }
+#     }
+# }
 
 ROOT_URLCONF = 'chakulapoa.urls'
 
@@ -150,11 +152,10 @@ REST_FRAMEWORK = {
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
     "DEFAULT_PERMISSION_CLASSES": (
-        "rest_framework.permissions,IsAuthenticated",
+        "rest_framework.permissions.IsAuthenticated",
     ),
 }
 
-from rest_framework_simplejwt.tokens import AccessToken
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=int(os.getenv("JWT_ACCESS_LIFETIME_MIN", "60"))),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=int(os.getenv("JWT_REFRESH_LIFETIME_DAY", "7")))
