@@ -44,9 +44,10 @@ INSTALLED_APPS = [
     'core',
     'subscriptions',
     'meals',
-    'payments',
+    'Transactions',
     'Universities',
     'Users',
+    'Subscription_plans',
 
 ]
 
