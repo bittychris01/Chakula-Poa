@@ -16,7 +16,7 @@ class Users(models.Model):
     email = models.CharField(max_length=255,blank=True)
     phone_number = models.CharField(max_length=20)
     registration_number = models.CharField(max_length=50, blank=True)
-    university_id = models.ForeignKey(Universities, on_delete=models.CASCADE)
+    university_id = models.ForeignKey(Universities, on_delete=models.SET_NULL, null=True)
     role = models.CharField(max_length=20, choices=ROLE_CHOICES)
     password_hash = models.CharField(max_length=255, blank=True)
     is_active = models.BooleanField(default=True)
