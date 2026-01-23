@@ -7,6 +7,7 @@ from .serializers import UsersRegisterSerializer, UsersLoginSerializer
 from django.contrib.auth.hashers import check_password
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import AllowAny
+from rest_framework import generics
 
 class UserRegisterView(APIView):
     permission_classes = [AllowAny]
@@ -36,7 +37,10 @@ class UserLoginView(APIView):
                 return Response({'error': 'User not found.'}, status=status.HTTP_404_NOT_FOUND)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
+class UserViewList(generics.ListAPIView):
+    queryset = Users.objects.all()
+    serializer_class = UsersRegisterSerializer
+    permission_classes = [AllowAny]
             
             
         
